@@ -5412,17 +5412,22 @@ def cse(exprs):
     return (vec_pair_to_list(replacements), vec_basic_to_list(reduced_exprs))
 
 def latex(expr):
+    #print(f"latex: {expr} {type(expr)}")
     cdef Basic expr_ = sympify(expr)
     dd=deref(expr_.thisptr)
     return symengine.latex(dd).decode("utf-8")
 
+"""
 def latex_matrix(expr):
     print(f'latex_matrix: received {expr}')
     #cdef Basic expr_ = sympify(expr)
-    cdef DenseMatrixBase expr_ = expr
-    dd=deref(expr_.thisptr)
-    return symengine.latex(dd).decode("utf-8")
-
+    #cdef DenseMatrixBase expr_ = expr
+    #dd=deref(expr_.thisptr)
+    print(f'latex_matrix: return xxx')
+    return "mm"
+    #dd=cython.cast(DenseMatrixBase,dd)
+    #return symengine.latex_matrix(dd).decode("utf-8")
+"""
 cdef _flattened_vec(symengine.vec_basic &vec, exprs):
     cdef Basic b
     if is_sequence(exprs):
