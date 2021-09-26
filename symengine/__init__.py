@@ -60,9 +60,9 @@ __version__ = "0.8.1"
 
 
 # To not expose internals
-del lib.symengine_wrapper
-del lib
-del wrapper
+#del lib.symengine_wrapper
+#del lib
+#del wrapper
 
 
 def test():

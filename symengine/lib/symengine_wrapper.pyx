@@ -5413,7 +5413,15 @@ def cse(exprs):
 
 def latex(expr):
     cdef Basic expr_ = sympify(expr)
-    return symengine.latex(deref(expr_.thisptr)).decode("utf-8")
+    dd=deref(expr_.thisptr)
+    return symengine.latex(dd).decode("utf-8")
+
+def latex_matrix(expr):
+    print(f'latex_matrix: received {expr}')
+    #cdef Basic expr_ = sympify(expr)
+    cdef DenseMatrixBase expr_ = expr
+    dd=deref(expr_.thisptr)
+    return symengine.latex(dd).decode("utf-8")
 
 cdef _flattened_vec(symengine.vec_basic &vec, exprs):
     cdef Basic b
